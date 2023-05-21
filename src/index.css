@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.echarts-for-react {
+  height: 500px !important;
+}
+.radio {
+  margin: 50px;
+}
+
+.chart {
+  margin-top: 50px;
+}
+
+iframe {
+  display: none;
+}
+
+.test{
+  color:red;
+}
+
+.sunburst-tooltip {
+  max-width: 1000px !important;
+}

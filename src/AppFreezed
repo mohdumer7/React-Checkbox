@@ -1,0 +1,136 @@
+import "./styles.css";
+import { useState } from "react";
+
+import SunburstChart from "./components/SunburstChart";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+
+import internal from "./data/internal.json";
+import externalChannel from "./data/external_channel.json";
+import externalLBG from "./data/external_lbg.json";
+import sca from "./data/sca.json";
+import multisats from "./data/mulstats.json";
+
+export default function App() {
+  const [value, setValue] = useState("internal");
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  const transformData = (chapters) => {
+    chapters.children.forEach((chapter) => {
+      chapter["displaySize"] = chapter["size"] + 1;
+      chapter["size"] = chapter["size"] + 10;
+      // assuming every chapter always have sections,
+      // hence not explicitly checking if key children is present
+      chapter.children.forEach((section) => {
+        section["displaySize"] = section["size"] + 1;
+        section["size"] = section["size"] + 10;
+        if ("children" in section) {
+          section.children.forEach((video) => {
+            video["displaySize"] = video["size"] + 1;
+            video["size"] = video["size"] + 10;
+          });
+        }
+      });
+    });
+    return chapters;
+  };
+
+  // const sumExtraDur = (a, b) => a.extraDur + b.extraDur;
+
+  // const transformData = (sections) => {
+  //   sections.extraDur = sections.children.reduce(sumExtraDur, 0) + 20;
+  //   sections.children.forEach((section) => {
+  //     if ("size" in section) {
+  //       // section["displayVal"] = section["size"];
+  //       section["size"] = section["size"] + 20;
+  //     }
+  //     if ("children" in section) {
+  //       // section.extraDur = section.children.length + 20;
+  //       section.extraDur = section.children.reduce(sumExtraDur, 0) + 20;
+  //       section.children.forEach((subsection) => {
+  //         if ("size" in subsection) {
+  //           // subsection["displayVal"] = subsection["size"];
+  //           subsection["size"] = subsection["size"] + 20;
+  //         }
+  //         if ("children" in subsection) {
+  //           // subsection.extraDur = subsection.children.length * 20 + 20;
+  //           sections.extraDur = sections.children.reduce(sumExtraDur, 0) + 20;
+  //           subsection.children.forEach((video) => {
+  //             video.extraDur = 20;
+  //             if ("size" in video) {
+  //               // video["displayVal"] = video["size"];
+  //               video["size"] = video["size"] + 20;
+  //             }
+  //           });
+  //         }
+  //       });
+  //     }
+  //   });
+  //   return sections;
+  // };
+
+  return (
+    <div className="App">
+      <h1>Hello CodeSandbox</h1>
+      <h2>Start editing to see some magic happen!</h2>
+      {console.log(value)}
+      {/* <div className="radio">
+        <FormControl>
+          <RadioGroup
+            row
+            aria-labelledby="demo-row-radio-buttons-group-label"
+            name="row-radio-buttons-group"
+            value={value}
+            onChange={handleChange}
+          >
+            <FormControlLabel
+              value="internal"
+              control={<Radio color="success" />}
+              label="Internal"
+            />
+            <FormControlLabel
+              value="exch"
+              control={<Radio color="success" />}
+              label="External Channel"
+            />
+            <FormControlLabel
+              value="exlbg"
+              control={<Radio color="success" />}
+              label="External LBG"
+            />
+            <FormControlLabel
+              value="sca"
+              control={<Radio color="success" />}
+              label="SCA"
+            />
+            <FormControlLabel
+              value="bt_mulstats"
+              control={<Radio color="success" />}
+              label="Multimedia stats"
+            /> 
+          </RadioGroup>
+        </FormControl>
+      </div> */}
+      <div className="chart">
+        {/* {value === "internal" ? (
+          <SunburstChart data={internal} />
+        ) : value === "exch" ? (
+          <SunburstChart data={externalChannel} />
+        ) : value === "exlbg" ? (
+          <SunburstChart data={externalLBG} />
+        ) : value === "bt_mulstats" ? (
+          <SunburstChart data={multisats} />
+        ) : (
+          <SunburstChart data={sca} />
+        )} */}
+        <SunburstChart data={multisats} />
+        {/* <SunburstChart data={transformData(multisats)} /> */}
+      </div>
+    </div>
+  );
+}

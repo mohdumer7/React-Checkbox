@@ -1,0 +1,137 @@
+{
+  "name": "HEXAWARE",
+  "color": "#1E96BE",
+  "children": [
+    {
+      "name": "Platform",
+      "color": "#0F6046",
+      "size": 100,
+      "children": [
+        {
+          "name": "Mulesoft",
+          "color": "#208D6A",
+          "size": 100,
+          "children": [
+            {
+              "name": "Account 1",
+              "color": "#208D6A",
+              "size": 100,
+              "children": [
+                {
+                  "name": "Project 1",
+                  "color": "#208D6A",
+                  "size": 100
+                }
+              ]
+            },
+            {
+              "name": "Account 2",
+              "color": "#208D6A",
+              "size": 100,
+              "children": [
+                {
+                  "name": "Project 3",
+                  "color": "#208D6A",
+                  "size": 100
+                }
+              ]
+            },
+            {
+              "name": "Account 3",
+              "color": "#208D6A",
+              "size": 100,
+              "children": [
+                {
+                  "name": "Project 5",
+                  "color": "#208D6A",
+                  "size": 100
+                }
+              ]
+            },
+            {
+              "name": "Account 4",
+              "color": "#208D6A",
+              "size": 100,
+              "children": [
+                {
+                  "name": "Project 6",
+                  "color": "#208D6A",
+                  "size": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Boomi",
+          "color": "#208D6A",
+          "size": 100,
+          "children": [
+            {
+              "name": "Account 5",
+              "color": "#208D6A",
+              "size": 100
+            }
+          ]
+        },
+        {
+          "name": "Azure",
+          "color": "#208D6A",
+          "size": 100,
+          "children": [
+            {
+              "name": "Account 6",
+              "color": "#208D6A",
+              "size": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Technology",
+      "color": "#000",
+      "size": 100,
+      "children": [
+        {
+          "name": "Java",
+          "color": "#208D6A",
+          "size": 100,
+          "children": [
+            {
+              "name": "Account 1",
+              "color": "#208D6A",
+              "size": 100,
+              "children": [
+                {
+                  "name": "Project 10",
+                  "color": "#208D6A",
+                  "size": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ".Net",
+          "color": "#208D6A",
+          "size": 100,
+          "children": [
+            {
+              "name": "Account 2",
+              "color": "#208D6A",
+              "size": 100,
+              "children": [
+                {
+                  "name": "Project 2",
+                  "color": "#208D6A",
+                  "size": 100
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+import React from "react";
+
+import SunburstChart from "sunburst-chart";
+import fromKapsule from "react-kapsule";
+
+const ReactSunburst = fromKapsule(SunburstChart, {
+  methodNames: ["focusNode"]
+});
+
+function secondsToHms(d) {
+  // d = Number(d) - 20;
+  d = Number(d);
+
+  if (d === 40) {
+    d = d - 20;
+  }
+
+  d = d - 20;
+
+  var h = Math.floor(d / 3600);
+  var m = Math.floor((d % 3600) / 60);
+  var s = Math.floor((d % 3600) % 60);
+
+  if (h === 0 && m === 0 && s === 0) {
+    return "<i>No video</i>";
+  }
+
+  var hDisplay = h > 0 ? h + (h === 1 ? " hr, " : " hrs, ") : "";
+  var mDisplay = m > 0 ? m + (m === 1 ? " min, " : " mins, ") : "";
+  var sDisplay = s > 0 ? s + (s === 1 ? " sec" : " secs") : "";
+
+  return hDisplay + mDisplay + sDisplay;
+}
+
+// function getToolTip(data, node) {
+//   var d = Number(node.value) - Number(data.extraDur);
+
+//   var h = Math.floor(d / 3600);
+//   var m = Math.floor((d % 3600) / 60);
+//   var s = Math.floor((d % 3600) % 60);
+
+//   if (h === 0 && m === 0 && s < 50) {
+//     return "<i>No video</i>";
+//   }
+
+//   var hDisplay = h > 0 ? h + (h === 1 ? " hr, " : " hrs, ") : "";
+//   var mDisplay = m > 0 ? m + (m === 1 ? " min, " : " mins, ") : "";
+//   var sDisplay = s > 0 ? s + (s === 1 ? " sec" : " secs") : "";
+
+//   return hDisplay + mDisplay + sDisplay;
+// }
+
+const Chart = ({ data }) => (
+  <ReactSunburst
+    width={500}
+    height={500}
+    excludeRoot
+    label="name"
+    size="size"
+    // size={(d, node) => `${node.value + 20}`}
+    color={"color"}
+    centerRadius={0.3}
+    minSliceAngle={0}
+    // labelOrientation="angular"
+    radiusScaleExponent={0.7}
+    // tooltipContent={(d, node) => `${node.value} seconds`}
+    // tooltipContent={(d, node) => `${secondsToHms(d.displayVal)}`}
+    tooltipContent={(d, node) => `${secondsToHms(d.displaySize)}`}
+    // tooltipContent={(d, node) => `${secondsToHms(node.value)}`}
+    // tooltipContent={(d, node) => `${getToolTip(d, node)}`}
+    data={data}
+  />
+);
+
+export default Chart;
